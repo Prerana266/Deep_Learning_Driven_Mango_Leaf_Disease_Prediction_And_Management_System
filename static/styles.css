@@ -1,0 +1,285 @@
+/* Enhanced CSS for AgriLeaf Doctor */
+
+/* Root variables for theme */
+:root {
+    --primary-green: #2E7D32;
+    --secondary-green: #4CAF50;
+    --light-green: #81C784;
+    --dark-green: #1B5E20;
+    --accent-yellow: #FFC107;
+    --accent-orange: #FF9800;
+    --background-color: #E3F2FD;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-primary: #2E7D32;
+    --text-secondary: #666;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Body and main container */
+body {
+    background: var(--background-color);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Falling leaves animation */
+.falling-leaves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-green);
+    border-radius: 50% 0 50% 0;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+.leaf:nth-child(odd) {
+    background: var(--accent-orange);
+    transform: rotate(45deg);
+}
+
+.leaf:nth-child(3n) {
+    background: var(--accent-yellow);
+    transform: rotate(90deg);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main header */
+.main-header {
+    font-size: 3.5rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards */
+.disease-card, .treatment-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.disease-card:hover, .treatment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.disease-card {
+    border-left: 5px solid var(--primary-green);
+}
+
+.treatment-card {
+    border-left: 5px solid var(--secondary-green);
+}
+
+/* Buttons */
+.stButton>button {
+    background: linear-gradient(45deg, var(--secondary-green), var(--light-green));
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 0.75rem 2.5rem;
+    border: none;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton>button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background: linear-gradient(45deg, var(--light-green), var(--secondary-green));
+}
+
+.stButton>button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.stButton>button:hover:before {
+    left: 100%;
+}
+
+/* Sidebar */
+.sidebar .sidebar-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+/* Metrics */
+.metric-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.metric-container:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* File uploader */
+.uploadedFile {
+    border: 2px dashed var(--secondary-green);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.uploadedFile:hover {
+    border-color: var(--primary-green);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Images */
+.stImage {
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.stImage:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Expander */
+.streamlit-expanderHeader {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Text input */
+.stTextInput input {
+    border-radius: 10px;
+    border: 2px solid var(--light-green);
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stTextInput input:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Success, error, info messages */
+.stSuccess, .stError, .stInfo {
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+/* Spinner */
+.stSpinner {
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-header {
+        font-size: 2.5rem;
+    }
+
+    .disease-card, .treatment-card {
+        padding: 1rem;
+    }
+
+    .stButton>button {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Color changing theme animation */
+@keyframes colorShift {
+    0% { --primary-green: #2E7D32; --secondary-green: #4CAF50; }
+    25% { --primary-green: #388E3C; --secondary-green: #66BB6A; }
+    50% { --primary-green: #43A047; --secondary-green: #81C784; }
+    75% { --primary-green: #4CAF50; --secondary-green: #A5D6A7; }
+    100% { --primary-green: #2E7D32; --secondary-green: #4CAF50; }
+}
+
+.theme-shifting {
+    animation: colorShift 10s ease-in-out infinite;
+}
