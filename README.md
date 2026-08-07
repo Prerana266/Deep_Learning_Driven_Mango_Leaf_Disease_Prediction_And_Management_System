@@ -27,4 +27,3 @@ Next steps:
 - Run the Streamlit app with `streamlit run app.py`.
 - Test the app by uploading leaf images and exploring features.
 
-Please confirm if you want me to assist with any of these next steps or if you want me to help with anything else related to this project.
